@@ -1,0 +1,7 @@
+defaults:
+  - configs/adm_radgenome_b1.yaml
+dataset:
+  root: ${MEDADM_DATA_ROOT}
+training:
+  num_workers: 0
+  device: auto

@@ -1,0 +1,15 @@
+# B1：ADM 增强图 → ResNet-101，验证异常增强的贡献（无 UniMed 语义）。
+defaults:
+  - configs/adm_radgenome_b0.yaml
+
+experiment:
+  name: adm_b1_resnet_adm
+
+evidence:
+  visual_dir: caches/adm/resnet/run_b1_adm
+
+adm:
+  enabled: true
+
+model:
+  use_semantic: false

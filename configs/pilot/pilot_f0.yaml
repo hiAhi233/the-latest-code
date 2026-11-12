@@ -1,0 +1,31 @@
+# Pilot：用 4 例真实病例跑通 定位→ADM→ResNet→UniMed→训练→生成→评价 全链路。
+# 不是论文实验划分；正式结果请用 configs/adm_radgenome_*.yaml。
+defaults:
+  - configs/adm_radgenome_f0.yaml
+
+experiment:
+  name: pilot_f0
+
+manifest: caches/manifests/pilot.jsonl
+checkpoint_root: checkpoints/pilot
+results_root: results/pilot
+
+evidence:
+  localization_dir: caches/pilot/localization
+  visual_dir: caches/pilot/resnet/adm
+  semantic_dir: caches/pilot/unimed
+
+training:
+  epochs: 4
+  batch_size: 2
+  grad_accum: 1
+  warmup_ratio: 0.0
+  early_stopping_patience: 0
+  init_checkpoint: ""
+  warmup_new_epochs: 0
+  amp: true
+
+overfit:
+  epochs: 40
+  batch_size: 2
+  lr: 3.0e-4

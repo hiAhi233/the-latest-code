@@ -1,0 +1,15 @@
+# F0：ADM 增强图 → ResNet-101 + UniMed 疾病语义（正式主模型）。
+defaults:
+  - configs/adm_radgenome_b1.yaml
+
+experiment:
+  name: adm_f0_resnet_unimed
+
+model:
+  use_semantic: true
+  semantic_tokens: 13
+
+training:
+  # 从 B1 初始化，前 5 个 epoch 冻结 decoder 只训练语义投影器
+  init_checkpoint: checkpoints/adm_b1_resnet_adm/best.pt
+  warmup_new_epochs: 5

@@ -1,0 +1,49 @@
+# RadGenome-Brain MRI 数据、ontology 与缓存根目录（方案 §4、§6）。
+# 所有相对路径都相对项目根目录解析；数据根目录可用 dataset.root 覆盖。
+dataset:
+  id: radgenome_brain_mri
+  adapter: radgenome_brain_mri
+  root: D:/图神经网络/小样本原型学习/数据集/RadGenome-Brain_MRI/BraTS_GLI
+  modality: MRI
+  language: en
+  expect:
+    total: 230
+    counts: {train: 161, val: 23, test: 46}
+
+manifest: caches/manifests/radgenome_brain_mri.jsonl
+checkpoint_root: checkpoints
+results_root: results
+
+# 报告概念指标用 15 个概念（含 malignant_tumor / multifocal_lesion）；
+# UniMed 语义缓存是 13 个概念（见 configs/prompts_brain_mri.json）。
+ontology:
+  name: radgenome_gli_mvp
+  concepts:
+    brain_tumor: [brain tumor, intracranial tumor, intracranial mass, neoplasm, 脑肿瘤]
+    enhancement: [enhancement, enhancing lesion, contrast enhancement, ring enhancement, 强化]
+    glioma: [glioma, glial tumor, glial neoplasm, 胶质瘤]
+    glioblastoma: [glioblastoma, glioblastoma multiforme, GBM, 胶质母细胞瘤]
+    malignant_tumor: [malignant tumor, malignancy, malignant neoplasm, 恶性肿瘤]
+    hemorrhage: [hemorrhage, haemorrhage, hemorrhagic, bleeding, 出血]
+    edema: [edema, oedema, brain parenchyma edema, cerebral edema, 水肿]
+    mass_effect: [mass effect, space occupying effect, occupying effect, 占位效应]
+    necrosis: [necrosis, necrotic, 坏死]
+    multifocal_lesion: [multifocal, multicentric, multiple lesions, 多发]
+    midline_shift: [midline shift, deviation of midline structures, shift of midline structures, 中线移位]
+    ventricular_compression: [compression of the lateral ventricle, ventricular compression, compression of the anterior horns, 脑室受压]
+    low_grade_glioma: [low-grade glioma, low grade glioma, low-grade glial tumor, 低级别胶质瘤]
+    meningioma: [meningioma, meningeal tumor, 脑膜瘤]
+    metastasis: [brain metastasis, brain metastases, metastatic lesion, 脑转移瘤]
+
+caches:
+  localization: caches/adm/localization
+  visual: caches/adm/resnet
+  semantic: caches/adm/unimed
+
+tokenizer:
+  max_len: 256
+  min_freq: 1
+  max_vocab: 12000
+
+device: auto
+seed: 0

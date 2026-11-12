@@ -1,0 +1,8 @@
+defaults:
+  - configs/adm_radgenome_b0.yaml
+localization:
+  checkpoint: results/radgenome_k5_seed0_20261111/step600.pt
+evidence:
+  localization_dir: results/radgenome_k5_seed0_20261111/loc_step600_amp
+  visual_dir: results/radgenome_k5_seed0_20261111/resnet_original
+  semantic_dir: results/radgenome_k5_seed0_20261111/unimed

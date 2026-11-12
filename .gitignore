@@ -1,0 +1,29 @@
+# 运行产物不入库
+caches/
+checkpoints/
+results/
+*.log
+__pycache__/
+.pytest_cache/
+*.pyc
+*.egg-info/
+
+
+# Local data, downloaded weights and evaluation assets
+data/
+vendor/unimed/
+vendor/hf/
+vendor/torch/
+vendor/pycocoevalcap/
+localization_adaptation/
+.venv/
+.env
+*.pt
+*.pth
+*.safetensors
+*.npz
+*.nii
+*.nii.gz
+*.zip
+*.tar
+*.tar.gz

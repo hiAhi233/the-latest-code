@@ -1,0 +1,8 @@
+defaults:
+  - configs/chest_ct/b0.yaml
+experiment:
+  name: chestct_b1
+evidence:
+  visual_dir: caches/chest_ct/visual_adm
+adm:
+  enabled: true

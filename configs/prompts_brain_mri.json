@@ -1,0 +1,177 @@
+{
+  "version": "brain_mri_zero_shot_v2",
+  "aggregation": {
+    "top_fraction": 0.1
+  },
+  "exclusive_groups": [
+    {
+      "id": "specific_tumor_type",
+      "gate_concept": "brain_tumor",
+      "concept_ids": [
+        "glioblastoma",
+        "low_grade_glioma",
+        "meningioma",
+        "metastasis"
+      ]
+    }
+  ],
+  "concepts": [
+    {
+      "id": "brain_tumor",
+      "positive": [
+        "A brain MRI showing a brain tumor.",
+        "A brain MRI with an intracranial mass.",
+        "An axial brain MRI demonstrating a neoplasm."
+      ],
+      "negative": [
+        "A brain MRI without a brain tumor.",
+        "A brain MRI showing no intracranial mass.",
+        "An axial brain MRI with normal brain parenchyma."
+      ]
+    },
+    {
+      "id": "enhancement",
+      "positive": [
+        "A brain MRI showing contrast enhancement of a lesion.",
+        "A post-contrast brain MRI with an enhancing lesion.",
+        "A brain MRI demonstrating ring enhancement."
+      ],
+      "negative": [
+        "A brain MRI showing no contrast enhancement.",
+        "A post-contrast brain MRI without an enhancing lesion."
+      ]
+    },
+    {
+      "id": "necrosis",
+      "positive": [
+        "A brain MRI showing necrosis within a tumor.",
+        "A brain MRI with a necrotic lesion.",
+        "A brain MRI demonstrating central necrosis."
+      ],
+      "negative": [
+        "A brain MRI without necrosis.",
+        "A brain MRI showing no necrotic tissue."
+      ]
+    },
+    {
+      "id": "hemorrhage",
+      "positive": [
+        "A brain MRI showing hemorrhage.",
+        "A brain MRI with an intraparenchymal hemorrhage.",
+        "A brain MRI demonstrating hemorrhagic components."
+      ],
+      "negative": [
+        "A brain MRI without hemorrhage.",
+        "A brain MRI showing no bleeding."
+      ]
+    },
+    {
+      "id": "edema",
+      "positive": [
+        "A brain MRI showing vasogenic edema.",
+        "A brain MRI with surrounding brain edema.",
+        "A FLAIR brain MRI demonstrating peritumoral edema."
+      ],
+      "negative": [
+        "A brain MRI without edema.",
+        "A brain MRI showing no vasogenic edema."
+      ]
+    },
+    {
+      "id": "mass_effect",
+      "positive": [
+        "A brain MRI showing mass effect.",
+        "A brain MRI with a space occupying lesion.",
+        "A brain MRI demonstrating local mass effect."
+      ],
+      "negative": [
+        "A brain MRI without mass effect.",
+        "A brain MRI showing no space occupying lesion."
+      ]
+    },
+    {
+      "id": "midline_shift",
+      "positive": [
+        "A brain MRI showing midline shift.",
+        "A brain MRI with deviation of the midline structures.",
+        "A brain MRI demonstrating midline displacement."
+      ],
+      "negative": [
+        "A brain MRI without midline shift.",
+        "A brain MRI showing no midline deviation."
+      ]
+    },
+    {
+      "id": "ventricular_compression",
+      "positive": [
+        "A brain MRI showing compression of the lateral ventricle.",
+        "A brain MRI with ventricular compression.",
+        "A brain MRI demonstrating compressed ventricles."
+      ],
+      "negative": [
+        "A brain MRI without ventricular compression.",
+        "A brain MRI showing normal ventricles."
+      ]
+    },
+    {
+      "id": "glioma",
+      "positive": [
+        "A brain MRI showing a glioma.",
+        "A brain MRI with a glial tumor.",
+        "A brain MRI demonstrating a glial neoplasm."
+      ],
+      "negative": [
+        "A brain MRI without a glioma.",
+        "A brain MRI showing no glial tumor."
+      ]
+    },
+    {
+      "id": "glioblastoma",
+      "positive": [
+        "A brain MRI showing a glioblastoma.",
+        "A brain MRI with glioblastoma multiforme.",
+        "A post-contrast brain MRI demonstrating glioblastoma."
+      ],
+      "negative": [
+        "A brain MRI without glioblastoma.",
+        "A brain MRI showing no glioblastoma multiforme."
+      ]
+    },
+    {
+      "id": "low_grade_glioma",
+      "positive": [
+        "A brain MRI showing a low-grade glioma.",
+        "A brain MRI with a low grade glial tumor.",
+        "A brain MRI demonstrating a low-grade neoplasm."
+      ],
+      "negative": [
+        "A brain MRI without a low-grade glioma.",
+        "A brain MRI showing no low-grade glial tumor."
+      ]
+    },
+    {
+      "id": "meningioma",
+      "positive": [
+        "A brain MRI showing a meningioma.",
+        "A brain MRI with an extra-axial meningeal tumor.",
+        "A contrast brain MRI demonstrating a meningioma."
+      ],
+      "negative": [
+        "A brain MRI without a meningioma.",
+        "A brain MRI showing no meningeal tumor."
+      ]
+    },
+    {
+      "id": "metastasis",
+      "positive": [
+        "A brain MRI showing brain metastases.",
+        "A brain MRI with a metastatic lesion.",
+        "A contrast brain MRI demonstrating metastasis."
+      ],
+      "negative": [
+        "A brain MRI without brain metastases.",
+        "A brain MRI showing no metastatic lesion."
+      ]
+    }
+  ]
+}

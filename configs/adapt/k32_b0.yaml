@@ -1,0 +1,45 @@
+defaults:
+  - configs/adm_radgenome_b0.yaml
+
+experiment:
+  name: k32_b0
+
+checkpoint_root: checkpoints/k32
+results_root: results/k32
+
+manifest: caches/manifests/radgenome_brain_mri.jsonl
+
+evidence:
+  mode: adm_simple
+  localization_dir: caches/adapt/k32/localization
+  visual_dir: caches/adapt/k32/visual_b0
+  semantic_dir: caches/adapt/k32/unimed
+
+dataset:
+  root: /root/autodl-tmp/medadm_k5/MedADM_RRG/data/RadGenome-Brain_MRI/BraTS_GLI
+
+localization:
+  backend: external
+  detector_root: /root/autodl-tmp/medadm_k5/detector
+  checkpoint: localization_adaptation/k32/step600.pt
+  source_sequence: t2f
+  topk_slices: 3
+  heat_size: 64
+
+semantic:
+  backend: unimed
+  frozen: true
+  use_original_image: true
+  num_concepts: 13
+  prototype_dim: 512
+  probability_temperature: 20.0
+  unimed_root: /root/autodl-tmp/chestct_k5/MedADM_RRG_ChestCT/vendor/unimed
+  weights: /root/autodl-tmp/chestct_k5/MedADM_RRG_ChestCT/vendor/unimed/weights/unimed-clip-vit-b16.pt
+  text_encoder: /root/autodl-tmp/chestct_k5/MedADM_RRG_ChestCT/vendor/unimed/weights/biomedbert
+  prompts: configs/prompts_brain_mri.json
+
+adm:
+  enabled: false
+
+model:
+  use_semantic: false

@@ -1,0 +1,6 @@
+defaults:
+  - configs/chest_ct/b1.yaml
+experiment:
+  name: chestct_f0
+model:
+  use_semantic: true

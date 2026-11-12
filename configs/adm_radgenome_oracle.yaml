@@ -1,0 +1,23 @@
+# O0：GT mask 增强（Oracle 上限），不是主结果，禁止 formal。
+defaults:
+  - configs/adm_radgenome_f0.yaml
+
+experiment:
+  name: adm_o0_oracle
+
+runtime:
+  formal: false
+
+evidence:
+  mode: adm_simple
+  localization_dir: caches/adm/localization/oracle
+  visual_dir: caches/adm/resnet/run_o0_oracle
+  semantic_dir: caches/adm/unimed/oracle
+
+adm:
+  enabled: true
+  oracle_mask: true
+
+training:
+  init_checkpoint: ""
+  warmup_new_epochs: 0

@@ -1,0 +1,16 @@
+{
+  "version": "chest_ct_v1",
+  "aggregation": {"top_fraction": 0.25},
+  "exclusive_groups": [],
+  "concepts": [
+    {"id": "pulmonary_nodule", "positive": ["A chest CT showing a pulmonary nodule.", "A CT scan of the chest with a small focal lung nodule."], "negative": ["A chest CT without a pulmonary nodule."]},
+    {"id": "lung_mass", "positive": ["A chest CT showing a pulmonary mass.", "A CT scan of the chest with a large focal lung mass."], "negative": ["A chest CT without a lung mass."]},
+    {"id": "atelectasis", "positive": ["A chest CT showing atelectasis.", "A CT scan of the chest showing a region of lung volume loss."], "negative": ["A chest CT without atelectasis."]},
+    {"id": "pleural_effusion", "positive": ["A chest CT showing a pleural effusion.", "A CT scan of the chest showing fluid in the pleural space."], "negative": ["A chest CT without pleural effusion."]},
+    {"id": "pneumothorax", "positive": ["A chest CT showing a pneumothorax.", "A CT scan of the chest showing air in the pleural space."], "negative": ["A chest CT without pneumothorax."]},
+    {"id": "emphysema", "positive": ["A chest CT showing emphysema.", "A CT scan of the chest showing emphysematous changes."], "negative": ["A chest CT without emphysema."]},
+    {"id": "mediastinal_lymphadenopathy", "positive": ["A chest CT showing enlarged mediastinal lymph nodes.", "A CT scan of the chest with mediastinal lymphadenopathy."], "negative": ["A chest CT without mediastinal lymphadenopathy."]},
+    {"id": "pulmonary_fibrosis", "positive": ["A chest CT showing pulmonary fibrosis.", "A CT scan of the chest showing fibrotic changes in the lungs."], "negative": ["A chest CT without pulmonary fibrosis."]},
+    {"id": "consolidation", "positive": ["A chest CT showing airspace consolidation.", "A CT scan of the chest showing a focal region of lung consolidation."], "negative": ["A chest CT without lung consolidation."]}
+  ]
+}

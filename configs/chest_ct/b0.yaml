@@ -1,0 +1,84 @@
+defaults:
+  - configs/adm_model.yaml
+
+dataset:
+  id: radgenome_chest_ct
+  adapter: radgenome_chest_ct
+  root: data/chest_ct
+  modality: CT
+  language: en
+
+experiment:
+  name: chestct_b0
+manifest: caches/chest_ct/manifest.jsonl
+checkpoint_root: checkpoints
+results_root: results
+
+ontology:
+  name: chest_ct
+  concepts:
+    pulmonary_nodule: [pulmonary nodule, lung nodule, pulmonary nodules, nodular density]
+    lung_mass: [lung mass, pulmonary mass, lung tumor]
+    atelectasis: [atelectasis, atelectatic changes]
+    pleural_effusion: [pleural effusion, pleural fluid]
+    pneumothorax: [pneumothorax]
+    emphysema: [emphysema, emphysematous changes]
+    mediastinal_lymphadenopathy: [mediastinal lymphadenopathy, enlarged mediastinal lymph nodes]
+    pulmonary_fibrosis: [pulmonary fibrosis, fibrotic changes]
+    consolidation: [consolidation, airspace consolidation]
+
+runtime:
+  formal: true
+  require_zero_shot: true
+evidence:
+  mode: adm_simple
+  localization_dir: caches/chest_ct/localization
+  visual_dir: caches/chest_ct/visual_b0
+  semantic_dir: caches/chest_ct/unimed
+localization:
+  backend: chest_ct_k5
+  detector_root: vendor/paclip
+  msd_root: data/msd_lung
+  checkpoint: checkpoints/chestct_locator/checkpoint_selected.pt
+  source_sequence: lung
+  topk_slices: 6
+  heat_size: 64
+adm:
+  enabled: false
+  mode: soft
+  gamma: 0.65
+  threshold: 0.35
+  normal_fallback: original
+  oracle_mask: false
+visual:
+  backbone: resnet101
+  pretrained: imagenet
+  frozen: true
+  patch_grid: 3
+  output_dim: 256
+  image_size: 224
+  modalities: [lung, mediastinal]
+  proj_seed: 0
+semantic:
+  backend: unimed
+  frozen: true
+  use_original_image: true
+  num_concepts: 9
+  prototype_dim: 512
+  probability_temperature: 20.0
+  unimed_root: vendor/unimed
+  weights: vendor/unimed/weights/unimed-clip-vit-b16.pt
+  text_encoder: vendor/unimed/weights/biomedbert
+  prompts: configs/chest_ct/prompts.json
+tokenizer:
+  max_len: 512
+  min_freq: 1
+  max_vocab: 12000
+model:
+  use_semantic: false
+  max_report_tokens: 512
+  num_modalities: 2
+  visual_tokens: 108
+  semantic_tokens: 9
+training:
+  epochs: 80
